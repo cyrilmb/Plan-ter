@@ -8,9 +8,10 @@ const {
 router.get('/', rejectUnauthenticated, async (req, res) => {
   try {
     const queryText = `SELECT * FROM "plant_library"
+    WHERE "user_id" = $1
     `;
 
-    const plantLibraryResponse = await pool.query(queryText);
+    const plantLibraryResponse = await pool.query(queryText, [req.params.id]);
     const plantList = plantLibraryResponse.rows;
 
     res.send(plantList);

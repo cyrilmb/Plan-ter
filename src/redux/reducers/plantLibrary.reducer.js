@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const allUserPlantsReducer = (state = [], action) => {
+const allPlantsByUserReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_PLANT_LIBRARY':
       return action.payload;
@@ -10,7 +10,7 @@ const allUserPlantsReducer = (state = [], action) => {
 };
 
 const plantLibraryReducer = combineReducers({
-  allUserPlantsReducer,
+  allPlantsByUserReducer,
 });
 
 export default plantLibraryReducer;

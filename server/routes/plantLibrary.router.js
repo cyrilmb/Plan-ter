@@ -5,13 +5,15 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-router.get('/', rejectUnauthenticated, async (req, res) => {
+router.get('/:userId', rejectUnauthenticated, async (req, res) => {
   try {
     const queryText = `SELECT * FROM "plant_library"
     WHERE "user_id" = $1
     `;
 
-    const plantLibraryResponse = await pool.query(queryText, [req.params.id]);
+    const plantLibraryResponse = await pool.query(queryText, [
+      req.params.userId,
+    ]);
     const plantList = plantLibraryResponse.rows;
 
     res.send(plantList);

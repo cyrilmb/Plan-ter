@@ -18,6 +18,19 @@ function PlantLibrary() {
         });
     }, []);
 
+    const [plantToSend, setPlantToSend] = useState({
+        common_name: ''
+    });
+
+    async function addNewPlant() {
+        try {
+            await axios.post('api/plant', plantToSend);
+
+        } catch (error) {
+
+        }
+    }
+
     return (
         <div>
             <button>ADD A NEW PLANT</button>

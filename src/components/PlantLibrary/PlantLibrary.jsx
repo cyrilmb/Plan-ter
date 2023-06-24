@@ -19,12 +19,28 @@ function PlantLibrary() {
     }, []);
 
     const [plantToSend, setPlantToSend] = useState({
-        common_name: ''
+        user_id: userId,
+        common_name: '',
+        sci_name: '',
+        height_cm: '',
+        radius_cm: '',
+        perennial: '',
+        sprout_start: '',
+        death_dormant_start: '',
+        leaf_type: '',
+        flower_color: '',
+        flower_start: '',
+        flower_end: '',
+        fruit_type: '',
+        fruit_start: '',
+        fruit_end: '',
+        sun_exposure: '',
+        soil_type: ''
     });
 
     async function addNewPlant() {
         try {
-            await axios.post('api/plant', plantToSend);
+            await axios.post('api/newPlant', plantToSend);
 
         } catch (error) {
 

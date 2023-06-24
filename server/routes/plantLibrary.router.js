@@ -18,7 +18,7 @@ router.get('/:userId', rejectUnauthenticated, async (req, res) => {
     res.send(plantList);
   } catch (error) {
     res.sendStatus(500);
-    console.log('Error getting plant library', error);
+    console.log('Error getting plant library:', error);
   }
 });
 
@@ -61,7 +61,12 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
       req.body.sun_exposure,
       req.body.soil_type,
     ];
-  } catch (error) {}
+    await pool.query(queryText, queryParams);
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+    console.log('Error posting new plant to libaray:', error);
+  }
 });
 
 router.post('/', (req, res) => {

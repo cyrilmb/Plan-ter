@@ -32,6 +32,10 @@ function Nav() {
               Plant Library
             </Link>
 
+            <Link className="navLink" to="/garden-plots">
+              Garden Plots
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

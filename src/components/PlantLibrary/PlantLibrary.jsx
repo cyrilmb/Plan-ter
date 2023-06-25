@@ -41,6 +41,7 @@ function PlantLibrary() {
     async function addNewPlant() {
         try {
             await axios.post('api/newPlant', plantToSend);
+            dispatch({ type: 'FETCH_PLANT_LIBRARY' });
 
         } catch (error) {
 
@@ -49,7 +50,8 @@ function PlantLibrary() {
 
     return (
         <div>
-            <button>ADD A NEW PLANT</button>
+            <h3>Add a new plant to your personal library</h3>
+            <button>+ NEW PLANT</button>
             <table>
                 <thead>
                     <tr>

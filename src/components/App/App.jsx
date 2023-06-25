@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PlantLibrary from '../PlantLibrary/PlantLibrary';
+import GardenPlots from '../GardenPlots/GardenPlots';
 
 import './App.css';
 
@@ -70,11 +71,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows PlantLibrary else shows LoginPage
             exact
             path="/plant-library"
           >
             <PlantLibrary />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Garden Plot Lists else shows LoginPage
+            exact
+            path="/garden-plots"
+          >
+            <GardenPlots />
           </ProtectedRoute>
 
           <Route

@@ -5,6 +5,7 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
+//Get user's plant library
 router.get('/:userId', rejectUnauthenticated, async (req, res) => {
   try {
     const queryText = `SELECT * FROM "plant_library"
@@ -22,6 +23,7 @@ router.get('/:userId', rejectUnauthenticated, async (req, res) => {
   }
 });
 
+//Post to add a new plant to plant library
 router.post('/', rejectUnauthenticated, async (req, res) => {
   try {
     const queryText = `INSERT INTO "plant_library" ("user_id", "common_name",

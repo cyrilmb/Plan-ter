@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 
 const Canvas = props => {
@@ -7,10 +6,10 @@ const Canvas = props => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
         //Our first draw
-        context.fillStyle = '#000000';
-        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }, []);
 
     return <canvas ref={canvasRef} {...props} />;

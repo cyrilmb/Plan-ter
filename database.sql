@@ -11,6 +11,9 @@ CREATE TABLE "user" (
 CREATE TABLE "plot_library" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
+	"yard_id" INT NOT NULL,
+	"x_yard_coordinate" INT NOT NULL,
+	"y_yard_coordinate" INT NOT NULL,
 	"plot_name" varchar NOT NULL,
 	"container_type" varchar NOT NULL,
 	"width" integer NOT NULL,
@@ -52,12 +55,24 @@ CREATE TABLE "plot_layout" (
 	"notes" varchar NOT NULL,
 	CONSTRAINT "plot_layout_pk" PRIMARY KEY ("id")
 	);
+
+CREATE TABLE "yard" (
+	"id" serial NOT NULL,
+	"user_id" INT NOT NULL,
+	"yard_name" VARCHAR(255) NOT NULL,
+	"width" INT NOT NULL,
+	"length" INT NOT NULL,
+	PRIMARY KEY ("id")
+);
 	
 ALTER TABLE "plot_library" ADD CONSTRAINT "plot_library_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+ALTER TABLE "plot_library" ADD CONSTRAINT "plot_library_fk1" FOREIGN KEY ("yard_id") REFERENCES "yard"("id");
 ALTER TABLE "plant_library" ADD CONSTRAINT "plant_library_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "plot_layout" ADD CONSTRAINT "plot_layout_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "plot_layout" ADD CONSTRAINT "plot_layout_fk1" FOREIGN KEY ("plot_id") REFERENCES "plot_library"("id");
 ALTER TABLE "plot_layout" ADD CONSTRAINT "plot_layout_fk2" FOREIGN KEY ("plant_id") REFERENCES "plant_library"("id");
+ALTER TABLE "yard" ADD CONSTRAINT "yard_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+
 
 INSERT INTO "plant_library" ("user_id", "common_name", "sci_name", "height_cm", "radius_cm", "perennial", "sprout_start", "death_dormant_start", "leaf_type", "flower_color", "flower_start", "flower_end", "fruit_type", "fruit_start", "fruit_end", "sun_exposure", "soil_type")
 VALUES

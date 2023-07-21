@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Canvas from "../CanvasComponent";
+import YardCanvas from "../YardCanvas/YardCanvas";
 
 function GardenPlots() {
     const dispatch = useDispatch();
@@ -10,15 +10,17 @@ function GardenPlots() {
 
     const userId = user.id;
 
+    const [yardWidth, setYardWidth] = useState(null);
+    const [yardHeight, setYardHeight] = useState(null);
+
     useEffect(() => {
+        console.log('yardHeight, yardWidth', yardHeight, yardWidth);
         dispatch({
             type: 'FETCH_GARDEN_PLOTS',
             payload: userId
         });
     }, []);
 
-    const [yardWidth, setYardWidth] = useState(null);
-    const [yardHeight, setYardHeight] = useState(null);
 
     async function submitYardDimensions() {
         const yardDimensions = [yardWidth, yardHeight];
@@ -29,11 +31,16 @@ function GardenPlots() {
         }
     }
 
+
+
     return (
         <div className="flex">
-            <Canvas className="flex-1" />
+            <YardCanvas yardWidth={yardWidth} yardHeight={yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
                 <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <label className="block text-white text-lg font-bold mb-2" htmlFor="width">
+                        First, enter the dimensions of your whole yard:
+                    </label>
                     <div className="mb-4">
                         <label className="block text-white text-sm font-bold mb-2" htmlFor="width">
                             Width

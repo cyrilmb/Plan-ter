@@ -11,8 +11,8 @@ function GardenPlots() {
     const userId = user.id;
 
     const [yardDimensions, setYardDimensions] = useState({
-        yardWidth: '',
-        yardHeight: ''
+        yardWidth: 50,
+        yardHeight: 50
     });
 
     useEffect(() => {
@@ -25,7 +25,6 @@ function GardenPlots() {
 
 
     async function submitYardDimensions() {
-        const yardDimensions = [yardWidth, yardHeight];
         try {
             await axios.post('api/yard', yardDimensions);
         } catch (error) {

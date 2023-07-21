@@ -9,7 +9,7 @@ const YardCanvas = props => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, props.yardWidth, props.yardHeight);
+        ctx.fillRect(0, 0, props?.yardWidth, props?.yardHeight);
     }, []);
 
     return <canvas ref={canvasRef} {...props} />;

@@ -10,15 +10,17 @@ function GardenPlots() {
 
     const userId = user.id;
 
-    const [yardWidth, setYardWidth] = useState(null);
-    const [yardHeight, setYardHeight] = useState(null);
+    const [yardDimensions, setYardDimensions] = useState({
+        yardWidth: '',
+        yardHeight: ''
+    });
 
     useEffect(() => {
-        console.log('yardHeight, yardWidth', yardHeight, yardWidth);
-        dispatch({
-            type: 'FETCH_GARDEN_PLOTS',
-            payload: userId
-        });
+        console.log('yardHeight, yardWidth', yardDimensions.yardHeight, yardDimensions.yardWidth);
+        // dispatch({
+        //     type: 'FETCH_GARDEN_PLOTS',
+        //     payload: userId
+        // });
     }, []);
 
 
@@ -35,7 +37,7 @@ function GardenPlots() {
 
     return (
         <div className="flex">
-            <YardCanvas yardWidth={yardWidth} yardHeight={yardHeight} className="flex-1 container mx-auto p-4" />
+            <YardCanvas yardWidth={yardDimensions.yardWidth} yardHeight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
                 <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <label className="block text-white text-lg font-bold mb-2" htmlFor="width">
@@ -46,8 +48,9 @@ function GardenPlots() {
                             Width
                         </label>
                         <input
+                            value={yardDimensions.yardWidth}
                             onChange={(event) => {
-                                setYardWidth(event.target.value);
+                                setYardDimensions({ ...yardDimensions, yardWidth: event.target.value });
                             }}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="width-input" type="int" placeholder="Enter the width in meters"></input>
                     </div>
@@ -56,8 +59,9 @@ function GardenPlots() {
                             Height
                         </label>
                         <input
+                            value={yardDimensions.yardHeight}
                             onChange={(event) => {
-                                setYardHeight(event.target.value);
+                                setYardDimensions({ ...yardDimensions, yardHeight: event.target.value });
                             }}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="height-input" type="int" placeholder="Enter the height in meters"></input>
                     </div>

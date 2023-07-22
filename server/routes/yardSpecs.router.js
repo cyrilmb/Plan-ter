@@ -15,8 +15,22 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', rejectUnauthenticated, (req, res) => {
+  try {
+    const queryText = `
+    INSERT into "yard" ("user_id", "width", "length")
+    VALUES ($1, $2, $3, $4);
+    `;
+    const queryData = [
+      req.body.userId,
+      req.body.yardWidth,
+      req.body.yardHeight,
+    ];
+    pool.query(queryText, queryData);
+    res.sendStatus(201);
+  } catch (error) {
+    console.log('Error posting yard dimensions:', error);
+  }
 });
 
 module.exports = router;

@@ -10,13 +10,17 @@ function GardenPlots() {
 
     const userId = user.id;
 
+    let x = 14;
+    let y = 30;
+
     const [yardDimensions, setYardDimensions] = useState({
-        yardWidth: 50,
-        yardHeight: 50
+        userId: userId,
+        yardWidth: (x * 16),
+        yardHeight: (y * 4.5)
     });
 
     useEffect(() => {
-        console.log('yardHeight, yardWidth', yardDimensions.yardHeight, yardDimensions.yardWidth);
+        console.log('yardHeight, yardWidth', yardDimensions.yardWidth, yardDimensions.yardHeight,);
         // dispatch({
         //     type: 'FETCH_GARDEN_PLOTS',
         //     payload: userId
@@ -36,7 +40,8 @@ function GardenPlots() {
 
     return (
         <div className="flex">
-            <YardCanvas yardWidth={yardDimensions.yardWidth} yardHeight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
+            {/* I guess React doesn't like camelCase for props variables, leave as yardwidth and yardheight */}
+            <YardCanvas yardwidth={yardDimensions.yardWidth} yardheight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
                 <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <label className="block text-white text-lg font-bold mb-2" htmlFor="width">

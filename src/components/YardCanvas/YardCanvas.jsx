@@ -10,31 +10,31 @@ const YardCanvas = props => {
         ctx.rect(x, y, brickWidth, brickHeight);
         ctx.closePath();
 
-        ctx.fillStyle = '#8B0000'; // Adjust the brick color
+        ctx.fillStyle = '#8B0000'; // brick color
         ctx.fill();
 
         // Draw mortar lines
-        ctx.strokeStyle = '#333'; // Adjust the mortar color
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#333'; // mortar color
+        ctx.lineWidth = .5;
         ctx.stroke();
     }
 
-    // Function to draw the brick wall with border
-    function drawBrickWallWithBorder(ctx, width, height) {
-        const brickWidth = 25; // Adjust the width of each brick
-        const brickHeight = 10; // Adjust the height of each brick
+    // Function to draw the brick walk border
+    function drawBrickWalkBorder(ctx, width, height) {
+        const brickWidth = 16;
+        const brickHeight = 4.5;
 
         const numRows = Math.ceil(height / brickHeight);
         const numCols = Math.ceil(width / brickWidth);
 
-        // Draw the inner brick wall
-        for (let row = 0; row < numRows; row++) {
-            for (let col = 0; col < numCols; col++) {
-                const x = col * brickWidth;
-                const y = row * brickHeight;
-                drawBrick(ctx, x, y, brickWidth, brickHeight);
-            }
-        }
+        // // Draw the inner bricks
+        // for (let row = 0; row < numRows; row++) {
+        //     for (let col = 0; col < numCols; col++) {
+        //         const x = col * brickWidth;
+        //         const y = row * brickHeight;
+        //         drawBrick(ctx, x, y, brickWidth, brickHeight);
+        //     }
+        // }
 
         // Draw the top border
         for (let col = 0; col < numCols; col++) {
@@ -69,14 +69,14 @@ const YardCanvas = props => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = '#b5b5b5';
-        drawBrickWallWithBorder(ctx, canvas.width, canvas.height);
+        drawBrickWalkBorder(ctx, props.yardwidth, props.yardheight);
         ctx.fill();
 
         // Cleanup function
         return () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         };
-    }, [props.yardWidth, props.yardHeight]);
+    }, [props.yardwidth, props.yardheight]);
 
     return <canvas ref={canvasRef} {...props} />;
 };

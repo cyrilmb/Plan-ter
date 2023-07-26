@@ -19,7 +19,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   try {
     const queryText = `
     INSERT into "yard" ("user_id", "width", "length")
-    VALUES ($1, $2, $3, $4);
+    VALUES ($1, $2, $3);
     `;
     const queryData = [
       req.body.userId,

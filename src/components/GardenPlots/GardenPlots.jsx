@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import YardCanvas from "../YardCanvas/YardCanvas";
+import CanvasContainer from "../CanvasContainer/CanvasContainer";
 
 function GardenPlots() {
     const dispatch = useDispatch();
@@ -10,8 +11,8 @@ function GardenPlots() {
 
     const userId = user.id;
 
-    let x = 14;
-    let y = 30;
+    let x = 50;
+    let y = 50;
 
     const [yardDimensions, setYardDimensions] = useState({
         userId: userId,
@@ -20,7 +21,7 @@ function GardenPlots() {
     });
 
     useEffect(() => {
-        console.log('yardHeight, yardWidth', yardDimensions.yardWidth, yardDimensions.yardHeight,);
+        console.log('yardWidth, yardHeight', yardDimensions.yardWidth, yardDimensions.yardHeight,);
         // dispatch({
         //     type: 'FETCH_GARDEN_PLOTS',
         //     payload: userId
@@ -41,7 +42,7 @@ function GardenPlots() {
     return (
         <div className="flex">
             {/* I guess React doesn't like camelCase for props variables, leave as yardwidth and yardheight */}
-            <YardCanvas yardwidth={yardDimensions.yardWidth} yardheight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
+            <CanvasContainer yardwidth={yardDimensions.yardWidth} yardheight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
                 <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <label className="block text-white text-lg font-bold mb-2" htmlFor="width">

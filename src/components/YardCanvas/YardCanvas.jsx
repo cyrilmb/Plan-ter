@@ -27,7 +27,7 @@ const YardCanvas = props => {
         const numRows = Math.ceil(height / brickHeight);
         const numCols = Math.ceil(width / brickWidth);
 
-        // // Draw the inner bricks
+        // Draw the inner bricks
         // for (let row = 0; row < numRows; row++) {
         //     for (let col = 0; col < numCols; col++) {
         //         const x = col * brickWidth;
@@ -68,7 +68,6 @@ const YardCanvas = props => {
         console.log('PROPS BUDDY', props);
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#b5b5b5';
         drawBrickWalkBorder(ctx, props.yardwidth, props.yardheight);
         ctx.fill();
 
@@ -78,7 +77,7 @@ const YardCanvas = props => {
         };
     }, [props.yardwidth, props.yardheight]);
 
-    return <canvas ref={canvasRef} {...props} />;
+    return <canvas ref={canvasRef} {...props} width={500} height={500} />;
 };
 
 export default YardCanvas;

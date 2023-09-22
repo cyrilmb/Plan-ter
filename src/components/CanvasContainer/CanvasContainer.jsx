@@ -9,8 +9,9 @@ const CanvasContainer = (props) => {
             const container = containerRef.current;
             const canvas = document.createElement('canvas');
             container.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
 
-            // You can set various properties of the canvas here if needed
+            // Set various properties of the canvas here
             canvas.width = container.offsetWidth;
             canvas.height = container.offsetHeight;
 
@@ -72,19 +73,18 @@ const CanvasContainer = (props) => {
                     drawBrick(ctx, x, y, brickWidth, brickHeight);
                 }
             }
-            const ctx = canvas.getContext('2d');
-            drawBrickWalkBorder(ctx, props.yardwidth, props.yardheight);
-            ctx.fill();
+            // drawBrickWalkBorder(ctx, props.yardwidth, props.yardheight);
         };
 
-        // Call the drawing function to add canvas elements to the container
+        // Call the drawing functions to add canvas elements to the container
         addCanvas();
 
-        // You can add as many canvas elements as you want, and they will automatically fit inside the container.
+
+
     }, []);
 
     return (
-        <div className="w-64 h-48 border border-black relative" ref={containerRef}>
+        <div className="w-64 h-48 border border-black" ref={containerRef}>
             {/* Canvas elements will be added here dynamically */}
         </div>
     );

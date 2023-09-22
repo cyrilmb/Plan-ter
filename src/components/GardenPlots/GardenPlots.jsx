@@ -11,8 +11,8 @@ function GardenPlots() {
 
     const userId = user.id;
 
-    let x = 50;
-    let y = 50;
+    let x = 5;
+    let y = 5;
 
     const [yardDimensions, setYardDimensions] = useState({
         userId: userId,
@@ -41,7 +41,7 @@ function GardenPlots() {
 
     return (
         <div className="flex">
-            {/* I guess React doesn't like camelCase for props variables, leave as yardwidth and yardheight */}
+            {/* React doesn't like camelCase for props variables, leave as yardwidth and yardheight */}
             <CanvasContainer yardwidth={yardDimensions.yardWidth} yardheight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
                 <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">

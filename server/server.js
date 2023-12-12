@@ -27,7 +27,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/plantLibrary', plantLibraryRouter);
-app.use('api/gardenPlots', gardenPlotsRouter);
+app.use('/api/gardenPlots', gardenPlotsRouter);
 app.use('/api/yard', yardSpecsRouter);
 
 // Serve static files

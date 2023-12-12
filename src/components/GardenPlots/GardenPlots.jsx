@@ -30,11 +30,10 @@ function GardenPlots() {
 
 
     function submitYardDimensions() {
-        try {
-            axios.post('api/yard', yardDimensions);
-        } catch (error) {
-            console.log('Error posting new yard dimensions:', error);
-        }
+        dispatch({
+            type: "ADD_YARD_DIMENSIONS",
+            payload: yardDimensions
+        });
     }
 
 

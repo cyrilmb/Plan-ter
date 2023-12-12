@@ -13,7 +13,7 @@ function* getGardenPlots() {
 
 function* addYardDimensions() {
   try {
-    yield axios.post(`/api/yardDimensions/${action.payload}`);
+    yield axios.post(`/api/yard`, action.payload);
   } catch (error) {
     console.error('Error posting yard dimensions', error);
   }
@@ -21,7 +21,7 @@ function* addYardDimensions() {
 
 function* gardenPlotsSaga() {
   yield takeLatest('FETCH_GARDEN_PLOTS', getGardenPlots);
-  yield takeLatest('ADD_GARDEN_DIMENSIONS', addYardDimensions);
+  yield takeLatest('ADD_YARD_DIMENSIONS', addYardDimensions);
 }
 
 export default gardenPlotsSaga;

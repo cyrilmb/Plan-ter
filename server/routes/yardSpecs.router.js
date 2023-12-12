@@ -8,13 +8,21 @@ const {
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/', rejectUnauthenticated, async (req, res) => {
+  try {
+    const queryText = `
+    SELECT * FROM "yard"
+    `;
+    response = await pool.query(queryText);
+    const dimensions = response.rows;
+
+    res.send(dimensions);
+  } catch (error) {
+    res.sendStatus(500);
+    console.log('Error getting yard dimensions', error);
+  }
 });
 
-/**
- * POST route template
- */
 router.post('/', rejectUnauthenticated, (req, res) => {
   try {
     const queryText = `

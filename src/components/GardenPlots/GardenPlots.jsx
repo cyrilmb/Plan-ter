@@ -29,9 +29,9 @@ function GardenPlots() {
     }, []);
 
 
-    async function submitYardDimensions() {
+    function submitYardDimensions() {
         try {
-            await axios.post('api/yard', yardDimensions);
+            axios.post('api/yard', yardDimensions);
         } catch (error) {
             console.log('Error posting new yard dimensions:', error);
         }
@@ -44,7 +44,7 @@ function GardenPlots() {
             {/* React doesn't like camelCase for props variables, leave as yardwidth and yardheight */}
             <CanvasContainer yardwidth={yardDimensions.yardWidth} yardheight={yardDimensions.yardHeight} className="flex-1 container mx-auto p-4" />
             <div className="flex-1 container mx-auto p-4">
-                <form className="bg-pink-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form className="bg-red-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <label className="block text-white text-lg font-bold mb-2" htmlFor="width">
                         First, enter the dimensions of your whole yard:
                     </label>

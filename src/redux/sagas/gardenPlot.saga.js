@@ -11,8 +11,17 @@ function* getGardenPlots() {
   }
 }
 
+function* addYardDimensions() {
+  try {
+    yield axios.post(`/api/yardDimensions/${action.payload}`);
+  } catch (error) {
+    console.error('Error posting yard dimensions', error);
+  }
+}
+
 function* gardenPlotsSaga() {
   yield takeLatest('FETCH_GARDEN_PLOTS', getGardenPlots);
+  yield takeLatest('ADD_GARDEN_DIMENSIONS', addYardDimensions);
 }
 
 export default gardenPlotsSaga;

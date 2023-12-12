@@ -59,7 +59,7 @@ CREATE TABLE "plot_layout" (
 CREATE TABLE "yard" (
 	"id" serial NOT NULL,
 	"user_id" INT NOT NULL,
-	"yard_name" VARCHAR(255) NOT NULL,
+	"yard_name" VARCHAR(255),
 	"width" INT NOT NULL,
 	"length" INT NOT NULL,
 	PRIMARY KEY ("id")
